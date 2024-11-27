@@ -2,10 +2,14 @@ import React from "react";
 import "./index.css";
 import ReactDom from "react-dom";
 
-export default function Modal({ children }) {
+export default function Modal({ children, danger = false }) {
+  let className = danger ? "border-red" : "border-blue";
+
   return ReactDom.createPortal(
-    <div className="modal-backdrop">
-      <div className="modal">{children}</div>
+    <div className="modal-component">
+      <div className="modal-backdrop">
+        <div className={`modal ${className}`}>{children}</div>
+      </div>
     </div>,
     document.getElementById("modal")
   );
